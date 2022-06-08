@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+/*
+    Indice
+        colores: Colores fondo, botones, texto, etc
+        tamaños y posición: fixed, absoluto, centrar, width, heigth
+        bordes y sombras: fortato dependiendo el proyecto
+        componentes: componentes repetitivos como los botones
+        app: Formato estandar de la mayoria de apps que desarrollo
+        adicionales: Desarrollo sobre el componente app  
+*/
+
+//colores
+
+$bg1: linear-gradient(90deg,#0a9,#066);
+$borde-color: #fff;
+$boton-color: #066;
+
+//tamaño y posición
+
+@mixin t($w,$h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin total {
+    width: 100%;
+    height: 100vh;
+}
+
+@mixin cien {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin fijar($t,$l) {
+    position:absolute;
+    top: $t;
+    left: $l;
+}
+
+@mixin pseudo($w,$h) {
+    content: '';
+    @include t($w,$h);
+    @include fijar(0,0);
+}
+
+@mixin responsivo($w1,$h1,$w2,$h2){
+    @media (orientation:landscape) {
+        width: $w1;
+        height: $h1;
+    }
+    @media (orientation:portrait) {
+        width: $w2;
+        height: $h2;
+    }
+}
+@mixin responsivo-w($w1,$w2){
+    @media (orientation:landscape) {
+        width: $w1;
+    }
+    @media (orientation:portrait) {
+        width: $w2;
+    }
+}
+
+//bordes y sombras
+
+$redondeo: 20px;
+
+@mixin borde-a {
+    border: 2px solid $borde-color;
+    border-radius: $redondeo;
+}
+@mixin borde-b {
+    border: 2px solid #333;
+    border-radius: $redondeo;
+}
+
+
+//botones
+
+@mixin boton {
+    border-style: none;
+    border-radius: $redondeo;
+    cursor: pointer;
+}
+
+@mixin boton-a($w) {
+    @include t($w,40px);
+    background: $boton-color;
+    color: #fff;
+    @include boton;
+}
+@mixin boton-b($w) {
+    @include t($w,40px);
+    background: #fff;
+    font-size: 15px;
+    @include boton;
+}
+
+//app
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, #root {
+    @include total;
+    @include centrar;
+    background: $bg1;
+    font-family: 'Nunito', sans-serif;
+}
+
+//adicionales
+
+main {
+    @include borde-a;
+    @include centrar;
+    padding: 30px;
+    overflow: hidden;
+    &.play {
+        @include responsivo(40%, 40vh, 80%, 30vh);
+    }
+    &.counting {
+        @include responsivo(80%, 80vh, 80%, 80vh);
+        background: #fff;
+    }
+}
+
+div.pdf-cont {
+    @include total;
+    overflow: hidden;
+    .pdf {
+        @include cien;
+    }
+}

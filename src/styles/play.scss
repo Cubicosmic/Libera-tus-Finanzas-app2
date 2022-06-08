@@ -1,0 +1,45 @@
+@import './mixin.scss';
+@import './animations.scss';
+
+div.play {
+    @include cien;
+    div {
+        @include t(100%,50%);
+        @include centrar;
+        button {
+            @include boton-b(30%);
+        }
+    }
+    div.animation {
+        transition: 3s;
+        color: #fff;
+        font-size: 30px;
+        p, span {
+            animation: desvanecer linear infinite 5s;
+        }
+        .i1, .i2 {
+            transition: 1s;
+        }
+        &.frame1 {
+            span {display: none;}
+            .i1, .i2 {
+                font-size: 40px;
+                margin: 5px;
+            }
+            .i1 {transform: rotate(-45deg);}
+            .i2 {
+                margin-left: 15px;
+                transform: rotate(-135deg);
+            }
+        }
+        &.frame2 {
+            p {display: none;}
+        }
+        &.frame3 {
+            p, span {display: none;}
+            .i1, .i2 {font-size: 50px; position: absolute;}
+            .i1 {transform: translateX(-8px) translateY(-10px);}
+            .i2 {transform: translateX(8px) translateY(10px);}
+        }
+    }
+}

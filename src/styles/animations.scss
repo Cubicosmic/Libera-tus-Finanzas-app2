@@ -1,0 +1,8 @@
+@import './mixin.scss';
+
+@keyframes desvanecer {
+    0%{opacity: 0; font-size: 1px;}
+    10%{opacity: 1; font-size: 30px;}
+    90%{opacity: 1; font-size: 30px;}
+    100%{opacity: 0; font-size: 1px;}
+}

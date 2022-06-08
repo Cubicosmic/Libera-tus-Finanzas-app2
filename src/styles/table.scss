@@ -1,0 +1,15 @@
+@import './mixin.scss';
+
+div.table {
+    width: 50%;
+    padding: 0 20px 0 20px;
+    table {
+        @include cien;
+        background: $bg1;
+        th, td {
+            background: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+    }
+}
