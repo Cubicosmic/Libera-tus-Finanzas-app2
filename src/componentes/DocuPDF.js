@@ -7,14 +7,11 @@ const DocuPDF = ({ img, date, saldo }) => {
     <Document>
       <Page>
         <view style={{
-          width: '100%',
+          padding: '50px'
         }}>
         {date.map((e,i)=>{
           return(
-            <View key={i}>
-              <Text>{date[i]}</Text>
-              <Text>{saldo[i]}</Text>
-            </View>
+            <Text key={i}>{date[i]}- ${saldo[i]}</Text>
           )
         })}
         </view>

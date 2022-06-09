@@ -70,8 +70,8 @@ function App() {
           }
         </main>
       }
-      {init & !edit ?
-        <button onClick={pdfCreate}>Ver PDF</button>:''
+      {init & !edit & !viewPDF ?
+        <button onClick={pdfCreate} className='pdf'>Descargar PDF</button>:''
       }
     </>
   );
